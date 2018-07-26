@@ -14,27 +14,27 @@ using Sourcerer.ViewModels;
 namespace Sourcerer.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ItemsPage : ContentPage
+	public partial class BrowsePage : ContentPage
 	{
-        ItemsViewModel viewModel;
+        BrowseViewModel viewModel;
 
-        public ItemsPage()
+        public BrowsePage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new BrowseViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        async void OnStorySelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
+            var story = args.SelectedItem as Story;
+            if (story == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new StoryPage(new StoryViewModel(story)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+            StoriesListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -46,8 +46,8 @@ namespace Sourcerer.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (viewModel.Stories.Count == 0)
+                viewModel.LoadStoriesCommand.Execute(null);
         }
     }
 }

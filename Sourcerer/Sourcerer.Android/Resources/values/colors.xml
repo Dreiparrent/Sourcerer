@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="launcher_background">#FFFFFF</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#673ab7</color>
+    <color name="colorPrimaryDark">#311B92</color>
+    <color name="colorAccent">#14D84B</color>
+    <color name="colorTransparent">#32000000</color>
+    <color name="colorBackground">#ede7f6</color>
+    <array name="SwipeRefreshColors">
+      <item>@color/colorPrimaryDark</item>
+      <item>@color/colorAccent</item>
+    </array>
+  
+  <!--
+    <color name="darkTransparent">#96000000</color>
+
+    <color name="flagUpdated">#9575CD</color>
+    <color name="flagNormal">#d1c4e9</color>
+    <color name="flagQuote">#BDBDBD</color>
+    <color name="flagConflicting">#EF5350</color>
+
+    <color name="greySelected">#EEEEEE</color>
+    <color name="white">#ffffff</color>
+    -->
 </resources>

@@ -8,11 +8,19 @@ using Xamarin.Forms;
 using Sourcerer.Models;
 using Sourcerer.Services;
 
+#if __ANDROID__
+using Sourcerer.Droid.Services;
+#endif
+#if __IOS__
+using Sourcerer.iOS.Services;
+#endif
+
 namespace Sourcerer.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IFirebaseService<Story> FirebaseService => DependencyService.Get<FirebaseService>() ?? new FirebaseService();
+        // public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

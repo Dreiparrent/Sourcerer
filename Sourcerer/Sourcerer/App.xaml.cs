@@ -13,9 +13,13 @@ namespace Sourcerer
 		{
 			InitializeComponent();
 
+            // Is Tablet
+            if (Device.Idiom == TargetIdiom.Tablet || Device.Idiom == TargetIdiom.Desktop)
+                MainPage = new MainPage();
+            else
+                MainPage = new MainPage();
 
-			MainPage = new MainPage();
-		}
+        }
 
 		protected override void OnStart ()
 		{

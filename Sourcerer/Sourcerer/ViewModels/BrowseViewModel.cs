@@ -10,26 +10,28 @@ using Sourcerer.Views;
 
 namespace Sourcerer.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class BrowseViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public ObservableCollection<Story> Stories { get; set; }
+        public Command LoadStoriesCommand { get; set; }
 
-        public ItemsViewModel()
+        public BrowseViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Stories = new ObservableCollection<Story>();
+            LoadStoriesCommand = new Command(async () => await ExecuteLoadStoriesCommand());
 
+            /*
             MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
             {
                 var _item = item as Item;
                 Items.Add(_item);
                 await DataStore.AddItemAsync(_item);
             });
+            */
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadStoriesCommand()
         {
             if (IsBusy)
                 return;
@@ -38,11 +40,11 @@ namespace Sourcerer.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                Stories.Clear();
+                var stories = await FirebaseService.GetItemsAsync(true);
+                foreach (var story in stories)
                 {
-                    Items.Add(item);
+                    Stories.Add(story);
                 }
             }
             catch (Exception ex)

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <array name="SwipeRefreshColors">
+    <item>@color/colorAccent</item>
+    <item>@color/colorPrimary</item>
+  </array>
+</resources>

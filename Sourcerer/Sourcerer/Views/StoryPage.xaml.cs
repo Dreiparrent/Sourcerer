@@ -9,28 +9,28 @@ using Sourcerer.ViewModels;
 namespace Sourcerer.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ItemDetailPage : ContentPage
+	public partial class StoryPage : ContentPage
 	{
-        ItemDetailViewModel viewModel;
+        StoryViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public StoryPage(StoryViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        public StoryPage()
         {
             InitializeComponent();
 
-            var item = new Item
+            var story = new Story
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Title = "Item 1",
+                Overview = "This is an item description."
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new StoryViewModel(story);
             BindingContext = viewModel;
         }
     }
