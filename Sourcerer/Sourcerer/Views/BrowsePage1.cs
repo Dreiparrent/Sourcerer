@@ -6,13 +6,14 @@ using System.Text;
 using Xamarin.Forms;
 using Sourcerer.ViewModels;
 using Sourcerer.Models;
-using Android.Support.V7.Widget;
+using System.Diagnostics;
 
 
 #if __ANDROID__
 using Xamarin.Forms.Platform.Android;
 using Sourcerer.Droid;
 using Android.Views;
+using Android.Support.V7.Widget;
 #endif
 #if __IOS__
 using Xamarin.Forms.Platform.iOS;
@@ -26,9 +27,52 @@ namespace Sourcerer.Views
 	{
         BrowseViewModel viewModel;
         ListView StoriesListView;
+        ListView listView;
         public BrowsePage1()
         {
+            
             viewModel = new BrowseViewModel();
+            /*
+            listView = new ListView(ListViewCachingStrategy.RecycleElement)
+            {
+                ItemsSource = viewModel.Stories,
+                ItemTemplate = new DataTemplate(() =>
+                {
+                    var nativeCell = new NativeCell();
+                    nativeCell.SetBinding(NativeCell.NameProperty, "Title");
+                    nativeCell.SetBinding(NativeCell.CategoryProperty, "Overview");
+                    nativeCell.SetBinding(NativeCell.ImageFilenameProperty, "ImgUrl");
+
+                    return nativeCell;
+                }),
+                RefreshCommand = viewModel.LoadStoriesCommand,
+                IsPullToRefreshEnabled = true,
+
+
+            };
+#pragma warning disable CS0612 // Type or member is obsolete
+            listView.SetBinding<BrowseViewModel>(ListView.IsRefreshingProperty, vm => vm.IsBusy, mode: BindingMode.OneWay);
+#pragma warning restore CS0612 // Type or member is obsolete
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    Padding = new Thickness(0, 20, 0, 0);
+                    break;
+                case Device.Android:
+                case Device.UWP:
+                    Padding = new Thickness(0);
+                    break;
+            }
+
+            Content = new StackLayout
+            {
+                Children = {
+                    listView
+                }
+            };
+            */
+            
             StoriesListView = new ListView
             {
                 ItemsSource = viewModel.Stories,
@@ -38,31 +82,32 @@ namespace Sourcerer.Views
                 RefreshCommand = viewModel.LoadStoriesCommand,
                 IsPullToRefreshEnabled = true,
                 // IsRefreshing = viewModel.IsRefreshing,
-                ItemTemplate = new DataTemplate(typeof(BrowseCell)),
+                // ItemTemplate = new DataTemplate(typeof(BrowseCell)),
+                ItemTemplate = new DataTemplate(() =>
+                {
+                    BrowseCell nativeCell = new BrowseCell();
+                    nativeCell.SetBinding(BrowseCell.TitleProperty, "Title");
+                    nativeCell.SetBinding(BrowseCell.OverviewProperty, "Overview");
+                    nativeCell.SetBinding(BrowseCell.ImgUrlProperty, "ImgUrl");
+
+                    return nativeCell;
+                })
             };
 #pragma warning disable CS0612 // Type or member is obsolete
             StoriesListView.SetBinding<BrowseViewModel>(ListView.IsRefreshingProperty, vm => vm.IsBusy, mode: BindingMode.OneWay);
 #pragma warning restore CS0612 // Type or member is obsolete
 
             StoriesListView.ItemSelected += OnStorySelected;
-            Content = new StackLayout {
+            Content = new StackLayout
+            {
                 Children = {
                     StoriesListView,
 					// new Label { Text = "Welcome to Xamarin.Forms!" }
 				}
-			};
-            /*
+            };
 #if __ANDROID__
-            PopupMenu popupMenu = new PopupMenu(, null);
-            popupMenu.MenuInflater.Inflate(Resource.Id.action_search);
+            Title = "Browse";
 #endif
-#if __IOS__
-            var testVar = new UIPopoverController
-            {
-                
-            }
-#endif
-            */
         }
 
         async void OnStorySelected(object sender, SelectedItemChangedEventArgs args)

@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sourcerer.App">
 	<Application.Resources>
-		<ResourceDictionary>
+        <ResourceDictionary>
+            <!--xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
+            <ResourceDictionary MergedWith="light:LightThemeResources">-->
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#673ab7</Color>
             <Style TargetType="NavigationPage">

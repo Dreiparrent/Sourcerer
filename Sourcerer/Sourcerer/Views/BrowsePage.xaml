@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CustomRenderer;assembly=CustomRenderer"
+             xmlns:local1="clr-namespace:Sourcerer.Views"
              x:Class="Sourcerer.Views.BrowsePage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
@@ -25,6 +27,11 @@
                  CachingStrategy="RecycleElement"
                  ItemSelected="OnStorySelected">
                 <ListView.ItemTemplate>
+                    <!--
+                    <DataTemplate>
+                        <local1:NativeCell Name="{Binding Title}" Category="{Binding Overview}" ImageFilename="{Binding ImgUrl}" />
+                    </DataTemplate>
+                    -->
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">

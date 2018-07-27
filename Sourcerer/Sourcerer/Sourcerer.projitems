@@ -25,11 +25,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StoryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BrowseViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\BrowseCell.xaml.cs">
-      <DependentUpon>BrowseCell.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\BrowsePage1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -37,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BrowseCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\StoryPage.xaml.cs">
       <DependentUpon>StoryPage.xaml</DependentUpon>
     </Compile>
@@ -63,12 +61,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\NewItemPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\BrowseCell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

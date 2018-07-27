@@ -17,9 +17,12 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(Xamarin.Forms.ListView), typeof(Sourcerer.Droid.Views.CustomListViewRenderer))]
 namespace Sourcerer.Droid.Views
 {
-#pragma warning disable CS0618 // Type or member is obsolete
     public class CustomListViewRenderer : ListViewRenderer
     {
+        public CustomListViewRenderer(Context context) : base(context)
+        {
+
+        }
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.ListView> e)
         {
             base.OnElementChanged(e);
@@ -32,5 +35,4 @@ namespace Sourcerer.Droid.Views
             }
         }
     }
-#pragma warning restore CS0618 // Type or member is obsolete
 }

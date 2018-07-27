@@ -11,7 +11,6 @@
       <item>@color/colorAccent</item>
     </array>
   
-  <!--
     <color name="darkTransparent">#96000000</color>
 
     <color name="flagUpdated">#9575CD</color>
@@ -21,5 +20,4 @@
 
     <color name="greySelected">#EEEEEE</color>
     <color name="white">#ffffff</color>
-    -->
 </resources>

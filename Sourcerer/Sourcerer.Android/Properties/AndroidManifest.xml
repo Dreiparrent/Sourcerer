@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="us.Sourcerer.Sourcerer" android:installLocation="preferExternal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="us.Sourcerer.Sourcerer" android:installLocation="preferExternal" android:versionName="0.0.1">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_GSERVICES" />
-	<application android:label="Sourcerer">
-    <!-- Firebase Instance Id reciever here. -->
-    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
-    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
-      <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        <category android:name="${applicationId}" />
-      </intent-filter>
-    </receiver>
-  </application>
-  <!-- Allow the application to access Google web-based services. -->
-  <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+	<application android:label="@string/app_name" android:theme="@style/MainTheme" android:icon="@mipmap/logo">
+		<!-- Firebase Instance Id reciever here. -->
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="${applicationId}" />
+			</intent-filter>
+		</receiver>
+	</application>
+	<!-- Allow the application to access Google web-based services. -->
+	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 </manifest>
